@@ -39,7 +39,7 @@ class UpdateProdutoRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'nome.required' => 'Por favor, informe o campo NOME.',
+            'nome.required' => 'O campo NOME não pode ser vazio.',
             'nome.max' => 'O campo NOME não pode ter mais de 256 caracteres.',
             'nome.string' => 'O campo NOME deve conter apenas texto.',
             'descricao.required' => 'Por favor, informe o campo DESCRICAO.',

@@ -11,7 +11,7 @@ class StoreCorRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,14 @@ class StoreCorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nome' => 'required',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'nome.required' => 'O campo NOME não pode ser vazio.'
         ];
     }
 }

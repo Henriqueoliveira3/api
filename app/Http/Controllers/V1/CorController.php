@@ -13,9 +13,6 @@ use Illuminate\Http\Request;
 
 class CorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request)
     {
         $filter = new CorFilter();
@@ -27,52 +24,26 @@ class CorController extends Controller
         return new CorCollection(Cor::where($queryItems)->paginate());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreCorRequest $request)
     {
-        //
+        return new CorResource(Cor::create($request->all()));
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show($id)
     {
         $cor = Cor::find($id);
         return new CorResource($cor);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Cor $cor)
+    public function update(UpdateCorRequest $request, Cor $core)
     {
-        //
+        $cor = $core;
+        $cor->update($request->all());
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateCorRequest $request, Cor $cor)
+    public function destroy(Cor $core)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Cor $cor)
-    {
-        //
+        $cor = $core;
+        $cor->delete();
     }
 }
