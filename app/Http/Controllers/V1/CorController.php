@@ -6,10 +6,11 @@ use App\Filters\V1\CorFilter;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\CorResource;
 use App\Models\Cor;
-use App\Http\Requests\StoreCorRequest;
-use App\Http\Requests\UpdateCorRequest;
+use App\Http\Requests\V1\StoreCorRequest;
+use App\Http\Requests\V1\UpdateCorRequest;
 use App\Http\Resources\V1\CorCollection;
 use Illuminate\Http\Request;
+
 
 class CorController extends Controller
 {
@@ -29,9 +30,9 @@ class CorController extends Controller
         return new CorResource(Cor::create($request->all()));
     }
 
-    public function show($id)
+    public function show(Cor $core)
     {
-        $cor = Cor::find($id);
+        $cor = $core;
         return new CorResource($cor);
     }
 
